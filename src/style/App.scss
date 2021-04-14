@@ -1,0 +1,10 @@
+@import "./assets/settings";
+@import "./assets/wrapper";
+@import "./assets/config";
+@import "./assets/compteur";
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $background-general;
+}

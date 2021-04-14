@@ -1,0 +1,12 @@
+.config {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 25px 0;
+    color: $color-h1;
+    .config__break,
+    .config__session {
+        line-height: 1.8em;
+        text-align: center;
+    }
+}
