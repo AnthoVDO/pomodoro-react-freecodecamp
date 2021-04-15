@@ -1,7 +1,9 @@
-import React from 'react';
 import Body from './Body';
 
 const Wrapper = () => {
+
+    
+
     return (
         <div className="wrapper" >
             <h1>Pomodoro</h1>
