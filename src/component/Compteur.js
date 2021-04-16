@@ -2,23 +2,35 @@ import React from 'react';
 import { AiFillPauseCircle, AiFillPlayCircle } from "react-icons/ai";
 import {VscDebugRestart} from "react-icons/vsc";
 
-const Compteur = ({counterScreen, play, handleCounterScreen}) => {
+const Compteur = ({counterScreenSession, play, handleCounterScreen, handleClear, session}) => {
+
+
+    
+
+
+
     return (
-        <div className="compteur">
-            <div className="compteur__name">Session</div>
-            <div className="compteur__time">
+        <div className={"compteur"} >
+            <div className="compteur__name" id="timer-label">{session? "Session" : "Break"}</div>
+            <div className="compteur__time" id="time-left">
             {
-                counterScreen%60>9 ? Math.floor(counterScreen/60)+":"+counterScreen%60: Math.floor(counterScreen/60)+":0"+counterScreen%60
+                counterScreenSession<600 && counterScreenSession%60<10 ?
+                "0"+Math.floor(counterScreenSession/60)+":0"+counterScreenSession%60:
+                counterScreenSession>599 && counterScreenSession%60<10 ?
+                Math.floor(counterScreenSession/60)+":0"+counterScreenSession%60:
+                counterScreenSession<600 && counterScreenSession%60>10 ?
+                "0"+Math.floor(counterScreenSession/60)+":"+counterScreenSession%60:
+                Math.floor(counterScreenSession/60)+":"+counterScreenSession%60
             }
-            
             </div>
+            <audio id="beep" preload="auto" src="./sound/duke-game-over.mp3"></audio>
             <div className="compteur__controler">
             {
-                play === false ?<button className="compteur__controler__play" onClick={handleCounterScreen} ><AiFillPlayCircle/></button>:<button className="compteur__controler__break" onClick={handleCounterScreen}><AiFillPauseCircle/></button>
+                play === false ?<button className="compteur__controler__play" id="start_stop" onClick={handleCounterScreen} ><AiFillPlayCircle/></button>:<button className="compteur__controler__break" onClick={handleCounterScreen}><AiFillPauseCircle/></button>
             }
                 
                 
-                <button className="compteur__controler__clear"><VscDebugRestart/></button>
+                <button className="compteur__controler__clear" id="reset" onClick={handleClear}><VscDebugRestart/></button>
             </div>
         </div>
     );

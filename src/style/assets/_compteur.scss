@@ -11,13 +11,16 @@
     .compteur__name {
         margin: 30px 0;
         color: $color-h1;
+        z-index: 1;
     }
     .compteur__time {
         margin: 30px 0;
         color: $color-h1;
+        z-index: 1;
     }
     .compteur__controler {
         margin: 30px 0;
+        z-index: 1;
         button {
             font-size: 1.5em;
         }
