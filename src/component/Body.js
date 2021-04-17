@@ -120,7 +120,7 @@ const Body = () => {
     return (
         <div className="body">
         <Config handleBreakCounter={handleBreakCounter} handleSessionCounter={handleSessionCounter} sessionCounter={sessionCounter} breakCounter={breakCounter}/>
-        <Compteur counterScreenSession={counterScreenSession} play={play} handleCounterScreen={handleCounterScreen} handleClear={handleClear} session={session} sessionCounter={sessionCounter} timeCounter={timeCounter}/>
+        <Compteur counterScreenSession={counterScreenSession} play={play} handleCounterScreen={handleCounterScreen} handleClear={handleClear} session={session} sessionCounter={sessionCounter} timeCounter={timeCounter} breakCounter={breakCounter}/>
         </div>
     );
 };

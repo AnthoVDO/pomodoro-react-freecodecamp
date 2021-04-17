@@ -5,9 +5,10 @@
     align-items: center;
     margin: 30px auto;
     padding: 25px 0;
-    background-color: $background-general;
+    background-color: #0e6e94;
     border-radius: 50%;
     width: 300px;
+    position: relative;
     .compteur__name {
         margin: 30px 0;
         color: $color-h1;
@@ -24,5 +25,18 @@
         button {
             font-size: 1.5em;
         }
+    }
+    .compteur__animation {
+        position: absolute;
+    }
+    .compteur__name--red {
+        color: red;
+        animation: blinker 0.5s linear infinite;
+    }
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
     }
 }
