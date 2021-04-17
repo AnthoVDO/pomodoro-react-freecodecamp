@@ -51,26 +51,19 @@ const Body = () => {
         }
     }
 
-    const handleCounterScreen = () => {
-        //play === false?setPlay(true):setPlay(false);
-        //return setPlay(!play);
-        setPlay(play=>!play);
-    }
-
     const handleClear = () => {
-        setCounterScreenSession(1500);
-        const audio = new Audio('./sound/duke-reboot.mp3');
-        
         setPlay(false);
         setSession(true);
         setBreakCounter(300);
         setSessionCounter(1500)
         document.getElementById("beep").pause();
         document.getElementById("beep").currentTime=0;
-         
-        return audio.play();
+        return setCounterScreenSession(1500);
     }
 
+    const handleCounterScreen = () => {
+        setPlay(play=>!play);
+    }
 
     useEffect(() => {
 
@@ -89,15 +82,12 @@ const Body = () => {
     useEffect(() => {
 
         if(counterScreenSession===0 && session){
-               document.getElementById("beep").play();
+                document.getElementById("beep").play();
                 setCounterScreenSession(breakCounter);
                 setSession(!session);
         }
 
         if(counterScreenSession===0 && !session){
-                
-                const audio = new Audio("./sound/duke-groovy.mp3");
-                audio.play();
                 setCounterScreenSession(sessionCounter);
                 setSession(!session);
         }
@@ -105,34 +95,32 @@ const Body = () => {
 
     }, [counterScreenSession, session, breakCounter, sessionCounter])
 
-
-
-
-
-
-    
-    useEffect(()=>{
-        if(play){
-            const audio = new Audio("./sound/duke-lets-rock.mp3");
-            return audio.play();
-        }else{
-            const audio = new Audio("./sound/duke-waiting-for.mp3");
-            return audio.play();
-        }
-    }, [play])
-    
-
     useEffect(()=>{
 
         return setCounterScreenSession(sessionCounter);
 
     }, [sessionCounter, breakCounter])
 
+    const timeCounter = () =>{
+        let minutes = Math.floor(counterScreenSession/60);
+        let seconds = counterScreenSession%60;
+
+        if(minutes<10){
+            minutes = "0"+minutes;
+        }
+
+        if(seconds<10){
+            seconds = "0"+seconds;
+        }
+
+        return `${minutes}:${seconds}`;
+    }
+
 
     return (
         <div className="body">
         <Config handleBreakCounter={handleBreakCounter} handleSessionCounter={handleSessionCounter} sessionCounter={sessionCounter} breakCounter={breakCounter}/>
-        <Compteur counterScreenSession={counterScreenSession} play={play} handleCounterScreen={handleCounterScreen} handleClear={handleClear} session={session} sessionCounter={sessionCounter}/>
+        <Compteur counterScreenSession={counterScreenSession} play={play} handleCounterScreen={handleCounterScreen} handleClear={handleClear} session={session} sessionCounter={sessionCounter} timeCounter={timeCounter}/>
         </div>
     );
 };
