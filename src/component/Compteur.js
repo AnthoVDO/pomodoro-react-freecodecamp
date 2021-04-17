@@ -26,7 +26,7 @@ const Compteur = ({counterScreenSession, play, handleCounterScreen, handleClear,
             } 
             />
             
-            <div className="compteur__time"  
+            <div  
             className={counterScreenSession<600 && counterScreenSession%60<5?"compteur__time compteur__name--red" : "compteur__time" }id="time-left">
             {
                 /*
