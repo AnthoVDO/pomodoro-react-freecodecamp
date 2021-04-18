@@ -29,22 +29,13 @@ const Compteur = ({counterScreenSession, play, handleCounterScreen, handleClear,
             <div  
             className={counterScreenSession<600 && counterScreenSession%60<5?"compteur__time compteur__name--red" : "compteur__time" }id="time-left">
             {
-                /*
-                counterScreenSession<600 && counterScreenSession%60<10 ?
-                "0"+Math.floor(counterScreenSession/60)+":0"+counterScreenSession%60:
-                counterScreenSession>599 && counterScreenSession%60<10 ?
-                Math.floor(counterScreenSession/60)+":0"+counterScreenSession%60:
-                counterScreenSession<600 && counterScreenSession%60>10 ?
-                "0"+Math.floor(counterScreenSession/60)+":"+counterScreenSession%60:
-                Math.floor(counterScreenSession/60)+":"+counterScreenSession%60  
-                */
                 timeCounter()
             }
             </div>
             <audio id="beep" src="./sound/duke-game-over.mp3"></audio>
             <div className="compteur__controler">
             {
-                play === false ?<button className="compteur__controler__play" id="start_stop" onClick={handleCounterScreen} ><AiFillPlayCircle/></button>:<button className="compteur__controler__break" onClick={handleCounterScreen}><AiFillPauseCircle/></button>
+                play === false ?<button className="compteur__controler__play" id="start_stop" onClick={handleCounterScreen} ><AiFillPlayCircle/></button>:<button className="compteur__controler__break" id="start_stop" onClick={handleCounterScreen}><AiFillPauseCircle/></button>
             }
                 
                 

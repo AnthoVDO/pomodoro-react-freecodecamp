@@ -62,6 +62,12 @@ const Body = () => {
     }
 
     const handleCounterScreen = () => {
+        if(play===false){
+            console.log("Pause to play");
+        }else{
+            console.log("Play to Pause");
+        }
+        console.log(counterScreenSession)
         setPlay(play=>!play);
     }
 
